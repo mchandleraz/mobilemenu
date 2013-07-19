@@ -90,33 +90,3 @@ $('#menu-toggle').click(function(){
 
 
 
-/* Changes the class on the sort icons to highlight the users selection */
-$('#nav-sort a').click(function(){
-        
-    var icon = $(this).children('i'); // Storing the icon element as a var for performance.
-    var classOriginal = icon.attr('class'); // Getting the current class
-    var classNotEmpty = classOriginal.split('-empty', 1); // Chopping "-empty" off and storing it in an array. ie: "icon-bookmark-empty" will become "icon-bookmark"
-    
-    $(this).siblings('.active').removeClass('active'); // Get all siblings that have the "active" class, and remove that class from them
-    $(this).toggleClass('active'); // If the anchor that was clicked has the active class, remove it. If it doesn't have the class, add it.
-
-    if ( $(this).hasClass('active') ) {
-
-        if ( classOriginal.indexOf('-empty') != -1 ) { // If the icon has "-empty" in its class
-
-            icon.removeClass(classOriginal).addClass(classNotEmpty[0]);
-
-        };
-
-    } else {
-
-        if ( icon.hasClass(classNotEmpty[0]) && !icon.hasClass('icon-sort-by-attributes-alt') ) { // If the class does NOT contain "-empty"
-
-            icon.removeClass(classNotEmpty[0]).addClass(classNotEmpty[0] + '-empty');
-
-        };
-
-    };
-
-});
-
