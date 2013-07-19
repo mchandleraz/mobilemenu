@@ -90,3 +90,61 @@ $('#menu-toggle').click(function(){
 
 
 
+/* function  classEndsWith */
+/*  mchandler@riester.com  */
+/****************************
+
+Checks if the given elements CSS class(es) end with 
+the given subString. Will be extended to check if 
+the elements class starts with, contains, or ends 
+with the given subString (with parameter to decide 
+where to look).
+
+****************************/
+
+function classEndsWith(element, classSubString) {
+    var regexp = new RegExp('(?:^|\\s)') + classSubString ); // RegExp checks if 
+
+    return $((element || '*') + '[class$="' + classSubString + '"]').filter(function(){
+        return regexp.test(this.className);
+    });
+};
+
+/* function  classContains */
+/*  mchandler@riester.com  */
+/****************************
+
+Checks if the given elements CSS class(es) contains 
+the given substring in the position specified.
+
+****************************/
+
+function classContains(element, classSubString, position) {
+
+    var regexp = new RegExp('(?:^|\\s)') + classSubString;
+
+        if (position === 'begins') {
+            
+            return $((element || '*') + '[class^="' + classSubString + '"]').filter(function(){
+                return regexp.test(this.className);
+            });
+
+        };
+
+        if (position === 'contains') {
+            
+            return $((element || '*') + '[class^="' + classSubString + '"]').filter(function(){
+                return regexp.test(this.className);
+            });
+
+        };
+
+        if (position === 'endswith') {
+            
+            return $((element || '*') + '[class$="' + classSubString + '"]').filter(function(){
+                return regexp.test(this.className);
+            });
+
+        };
+
+};
